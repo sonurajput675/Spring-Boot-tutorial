@@ -2,6 +2,7 @@ package com.codewithsonu.Sprintboottutorial.Controller;
 
 import java.util.List;
 
+import com.codewithsonu.Sprintboottutorial.error.DepartmentNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -44,7 +45,7 @@ public class DepartmentController  {
 
     // give the data by get mapping api  by @PathVariable annotation
     @GetMapping("/databyid/{id}")
-    public Department fetchDepartmentById(@PathVariable("id") Long departmenId) {
+    public Department fetchDepartmentById(@PathVariable("id") Long departmenId) throws DepartmentNotFoundException {
         LOGGER.info("Fetch the data inside the department");
         return departmentService.fetchtheDepartmentById(departmenId);
     }

@@ -2,8 +2,10 @@ package com.codewithsonu.Sprintboottutorial.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 
+import com.codewithsonu.Sprintboottutorial.error.DepartmentNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,9 +36,14 @@ public class DepatementServiceImp implements DepartmentService {
 
 
     @Override
-    public Department fetchtheDepartmentById(Long departmenId) {
-        return departmentRepo.findById(departmenId).get();
-     }
+    public Department fetchtheDepartmentById(Long departmenId) throws DepartmentNotFoundException {
+
+        Optional<Department> department =  departmentRepo.findById(departmenId);
+        if(!department.isPresent()){
+            throw new DepartmentNotFoundException("Department Not Available");
+
+        }
+        return  department.get();     }
 
 
     @Override

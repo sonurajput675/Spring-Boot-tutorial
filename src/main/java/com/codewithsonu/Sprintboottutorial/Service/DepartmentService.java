@@ -3,6 +3,7 @@ package com.codewithsonu.Sprintboottutorial.Service;
 import java.util.List;
 
 import com.codewithsonu.Sprintboottutorial.Entity.Department;
+import com.codewithsonu.Sprintboottutorial.error.DepartmentNotFoundException;
 
 public interface DepartmentService  {
 
@@ -10,7 +11,7 @@ public interface DepartmentService  {
 
     public List<Department> fetchtheDepartments();
 
-   public Department fetchtheDepartmentById(Long departmenId);
+   public Department fetchtheDepartmentById(Long departmenId) throws DepartmentNotFoundException;
 
     public  void deleteByID(Long deparmentId);
 
